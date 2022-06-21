@@ -16,7 +16,7 @@ public class IntegerPrimitives {
 	}
 
 	public static int getLengthByte() {
-		return getLength(8);
+		return getLength(getMaxByte());
 	}
 
 	public static char getMaxChar() {
@@ -34,7 +34,7 @@ public class IntegerPrimitives {
 	}
 
 	public static int getLengthChar() {
-		return getLength(16);
+		return getLength(getMaxChar());
 	}
 
 	public static short getMaxShort() {
@@ -51,7 +51,7 @@ public class IntegerPrimitives {
 	}
 
 	public static int getLengthShort() {
-		return getLength(16);
+		return getLength(getMaxShort());
 	}
 
 	public static int getMaxInt() {
@@ -69,7 +69,7 @@ public class IntegerPrimitives {
 
 	public static int getLengthInt() {
 		
-		return getLength(32);
+		return getLength(getMaxInt());
 	}
 
 	public static long getMinLong() {
@@ -85,10 +85,8 @@ public class IntegerPrimitives {
 	}
 
 	public static int getLengthLong() {
-		// TODO Auto-generated method stub
-		// 1. solution of copy\paste
-		// bonus solution with call the method getLength with passing some value
-		return getLength(64);
+
+		return getLength(getMaxLong());
 	}
 	
 /**
@@ -96,6 +94,10 @@ public class IntegerPrimitives {
  * @return length of any type 
  */
 	private static int getLength(long x) {
-   
-	return (int) Math.ceil(x/8);}
+		long value = 1;
+		int count = 1;
+		while(value < x && value >0) {
+			value *= 2;
+			count++;      }
+		return count / 8;}
 }
