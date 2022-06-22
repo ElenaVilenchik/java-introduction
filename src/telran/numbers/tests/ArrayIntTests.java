@@ -53,5 +53,23 @@ class ArrayIntTests {
 		assertEquals(1, ArrayInt.indexOf(ar, 2));
 		assertEquals(0, ArrayInt.indexOf(ar, 1));
 		assertEquals(-1, ArrayInt.indexOf(ar, 10));
-	}	
+	}
+	
+	
+	@Test
+	void maxSubsequenceLengthTest() {
+				int ar1[] = {1,3,3,2,8,8,8,5,6,6};
+				int ar2[] = {1,1,1,1,3,3,2,8,8,8,5,6,6};
+				int ar3[] = {1,3,3,2,8,5,6,6,6,6,6,6,6};
+				int ar4[] = {1,2,3,4,8,5,6,9,11,6,12,6,14};
+				int ar5[] = {};
+				int ar6[] = {1};
+							
+		assertEquals(3,ArrayInt.maxSubsequenceLength(ar1));
+		assertEquals(4,ArrayInt.maxSubsequenceLength(ar2));
+		assertEquals(7,ArrayInt.maxSubsequenceLength(ar3));
+		assertEquals(1,ArrayInt.maxSubsequenceLength(ar4));
+		assertEquals(0,ArrayInt.maxSubsequenceLength(ar5));
+		assertEquals(1,ArrayInt.maxSubsequenceLength(ar6));
+	}
 }

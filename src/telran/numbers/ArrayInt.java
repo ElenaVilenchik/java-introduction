@@ -84,4 +84,32 @@ public static int indexOf(int ar[], int number) {
 	}
 	return res;
 }
+
+/**
+ * 
+ * @param arr of integers
+ * @return the length of longest sub-sequence, consisting of repeating number
+
+For example, if input is
+    1,3,3,2,8,8,8,5,6,6
+the result is 3 - the length of longest subsequence 8,8,8
+
+The non-repeating number would  be considered as "subsequence of length 1".
+The result for empty array would be 0
+ */
+
+
+public static int maxSubsequenceLength(int[] arr){
+	int len = 1, temp = 1;
+	if (arr.length > 0) {
+		for(int i = 0; i < arr.length - 1; i++) {
+			if (arr[i] == arr[i+1]){
+					temp++; 
+					if (len < temp) len = temp;
+				}
+			else temp = 1;			
+			}
+	} else len = 0;
+	return len;
+}
 }
