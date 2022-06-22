@@ -21,17 +21,17 @@ class ArrayIntTests {
 	void addNumberTest() {
 		int expected[] = {1, 2, -10, 20};
 		int ar[] = {1, 2, -10};
-		//assertTrue(expected == ArrayInt.addNumber(ar, 20))
+		
 		assertArrayEquals(expected,ArrayInt.addNumber(ar,20));
+		assertArrayEquals(expected,ArrayInt.addNumberQuickly(ar,20));
 	}
 	
-	
+
 	@Test
 	void insertNumberTest() {
 		int expected[] = {1, 2, -10, 20};
 		int ar[] = {1, 2, 20};
-		assertArrayEquals(expected, ArrayInt.insertNumber(ar, 2, -10));
-		
+		assertArrayEquals(expected, ArrayInt.insertNumber(ar, 2, -10));	
 	}
 	
 	

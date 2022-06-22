@@ -1,5 +1,7 @@
 package telran.numbers;
 
+import java.util.Arrays;
+
 public class ArrayInt {
 	
 	/**
@@ -11,6 +13,7 @@ public class ArrayInt {
 public static int [] addNumber(int ar[], int number) {
 	
 	int res[] = new int[ar.length+1]; // creates array as the reference to ar.length+1 primitives
+	
 	//copying from ar to res
 	for(int i=0; i<ar.length; i++) {
 		res[i] = ar[i];
@@ -19,6 +22,13 @@ public static int [] addNumber(int ar[], int number) {
 	return res;
 	//TODO HW#3
 	// rewrite this method using class Arrays.method copyOf
+}
+public static int [] addNumberQuickly(int ar[], int number) {
+	
+	int [] res = Arrays.copyOf(ar, ar.length+1);
+
+	res[res.length-1] = number;
+	return res;
 }
 
 
@@ -32,7 +42,12 @@ public static int [] addNumber(int ar[], int number) {
 public static int[] insertNumber(int ar[], int index, int number) {
 	//TODO
 	// solution should be based on the method System.arraycopy
-	return null;
+	
+	int res[] = new int[ar.length + 1];
+	System.arraycopy(ar, 0, res, 0, index);  
+	res[index] = number;
+	System.arraycopy(ar, index, res, index + 1, ar.length - index);
+	return res;
 }
 
 
@@ -44,7 +59,11 @@ public static int[] insertNumber(int ar[], int index, int number) {
  */
 public static int[] removeNumber(int ar[], int index) {
 	//TODO // solution should be based on the method System.arraycopy
-	return null;
+	
+	int res[] = new int[ar.length - 1];
+	System.arraycopy(ar, 0, res, 0, index);    
+	System.arraycopy(ar, index + 1, res, index, ar.length - index - 1);
+	return res;
 }
 
 
