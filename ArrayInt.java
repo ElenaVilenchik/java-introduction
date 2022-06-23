@@ -24,7 +24,7 @@ public static int [] addNumber(int ar[], int number) {
 	// rewrite this method using class Arrays.method copyOf
 }
 public static int [] addNumberQuickly(int ar[], int number) {
-	
+	//[YG] It's not quickly. It takes the same time as copyOf does the same as in addNumber you've done
 	int [] res = Arrays.copyOf(ar, ar.length+1);
 
 	res[res.length-1] = number;
