@@ -9,24 +9,30 @@ import java.util.Arrays;
  */
 public class SportLotoAppl {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		int res[] = new int[7];		
-		for(int i = 0; i < 7; i++) {
-			res[i] = getRandomNumber(1,49);
-			for (int j=0;j<i;j++)
-            {
-                if (res[i] == res[j])
-                {
-                    i--;
-                }
-            }		
+private static final int N_NUMBERS = 7;
+private static final int MIN_NUMBER = 1;
+private static final int MAX_NUMBER = 49;
+
+public static void main(String[] args) {
+		
+		int res[] = new int[N_NUMBERS];	
+		for(int i = 0; i < N_NUMBERS; i++) {
+			int number = getUniqueNumber(res, MIN_NUMBER, MAX_NUMBER);
+			System.out.print(number + " ");
+			res[i] = number;
+			}
 		}
-		System.out.println(Arrays.toString(res));
+		
+private static int getUniqueNumber(int[] ar, int minNumber, int maxNumber) {
+	int Numb = 0;
+	do {
+		Numb = getRandomNumber(minNumber, maxNumber);
+	} while (ArrayInt.indexOf(ar, Numb) >=0);
+	return Numb;
+
 	}
 	
-	//random number in the range [min - max]
 private static int getRandomNumber(int min, int max) {
-	return (int) (min + (Math.random() * (max - min + 1)));
+	return (int) (min + Math.random() * (max - min + 1));
 	}
 }
