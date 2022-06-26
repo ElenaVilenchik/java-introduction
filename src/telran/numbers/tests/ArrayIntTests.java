@@ -2,11 +2,17 @@ package telran.numbers.tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
+
 import org.junit.jupiter.api.Test;
 
 import telran.numbers.ArrayInt;
 
 class ArrayIntTests {
+
+	private static final int SMALL_N_NUMBERS  = 100;
+	private static final int LARGE_N_NUMBERS = 10_000;
+	private static final int N_RUNS = 10000;
 
 	@Test
 	void referenceTest() {
@@ -15,8 +21,7 @@ class ArrayIntTests {
 		ar1[1] = 100;
 		assertEquals(100,ar[1]);
 	}
-	
-	
+		
 	@Test
 	void addNumberTest() {
 		int expected[] = {1, 2, -10, 20};
@@ -26,14 +31,12 @@ class ArrayIntTests {
 		assertArrayEquals(expected,ArrayInt.addNumberQuickly(ar,20));
 	}
 	
-
 	@Test
 	void insertNumberTest() {
 		int expected[] = {1, 2, -10, 20};
 		int ar[] = {1, 2, 20};
 		assertArrayEquals(expected, ArrayInt.insertNumber(ar, 2, -10));	
 	}
-	
 	
 	@Test
 	void removeNumberTest() {
@@ -44,8 +47,7 @@ class ArrayIntTests {
 		assertArrayEquals(expected1, ArrayInt.removeNumber(ar, 1));
 		assertArrayEquals(expected2, ArrayInt.removeNumber(ar, 0));
 		assertArrayEquals(expected3, ArrayInt.removeNumber(ar, 2));
-}
-	
+	}
 	
 	@Test
 	void indexOfTest() {
@@ -55,21 +57,65 @@ class ArrayIntTests {
 		assertEquals(-1, ArrayInt.indexOf(ar, 10));
 	}
 	
+
+@Test
+void sortSmallTest() {
+	int ar[] = new int[SMALL_N_NUMBERS];
+	fillRandomNumbers(ar);
+	ArrayInt.sort(ar);
+	runSortTests(ar);
+	}
+
+@Test
+void sortLargeTest() {
+	int ar[] = new int[LARGE_N_NUMBERS];
+	fillRandomNumbers(ar);
+	Arrays.sort(ar); //sorting with O[N*LogN]
+	ArrayInt.sort(ar);// bubble sorting with optimization of the HW #4
+	runSortTests(ar);
+}
+
+@Test
+void binarySearchTest() {
+	int ar[] = {1, 5, 100, 200, 350, 500};
+	assertEquals(0, ArrayInt.binaryIndexOf(ar, 1));
+	assertEquals (2, ArrayInt.binaryIndexOf(ar, 100)); 
+	assertEquals (5, ArrayInt.binaryIndexOf(ar, 500));
+	assertTrue (ArrayInt.binaryIndexOf(ar, 150) < 0);
 	
-	@Test
-	void maxSubsequenceLengthTest() {
-				int ar1[] = {1,3,3,2,8,8,8,5,6,6};
-				int ar2[] = {1,1,1,1,3,3,2,8,8,8,5,6,6};
-				int ar3[] = {1,3,3,2,8,5,6,6,6,6,6,6,6};
-				int ar4[] = {1,2,3,4,8,5,6,9,11,6,12,6,14};
-				int ar5[] = {};
-				int ar6[] = {1};
-							
-		assertEquals(3,ArrayInt.maxSubsequenceLength(ar1));
-		assertEquals(4,ArrayInt.maxSubsequenceLength(ar2));
-		assertEquals(7,ArrayInt.maxSubsequenceLength(ar3));
-		assertEquals(1,ArrayInt.maxSubsequenceLength(ar4));
-		assertEquals(0,ArrayInt.maxSubsequenceLength(ar5));
-		assertEquals(1,ArrayInt.maxSubsequenceLength(ar6));
+////Tests for HW #4
+	assertEquals(-1,ArrayInt.binaryIndexOf(ar, -10));
+	//assertEquals(-4,ArrayInt.binaryIndexOf(ar, 150));
+//	assertEquals(-7,ArrayInt.binaryIndexOf(ar, 600));
+	int ar1[] = {1,1,1,1,1};
+//	assertEquals(0, ArrayInt.binaryIndexOf(ar1, 1)); 
+}
+
+@Test
+void indexOfPerfomance() {
+	int ar[] = new int[LARGE_N_NUMBERS];
+	for (int i = 0; i < N_RUNS; i++) {
+		assertTrue(ArrayInt.indexOf(ar, 1) < 0);
+		}
+	}
+
+@Test	
+void binaryIndexOfPerfomance() {
+	int ar[] = new int[LARGE_N_NUMBERS];
+	for (int i = 0; i < N_RUNS; i++) {
+		assertTrue(ArrayInt.binaryIndexOf(ar, 1) < 0);
+		}
+}
+
+private void runSortTests(int[] ar) {
+	for (int i = 1; i < ar.length; i++) {
+		assertTrue(ar[i-1] <= ar[i]);
+	}
+}	
+private void fillRandomNumbers(int[] ar) {
+	for (int i = 0; i < ar.length; i++) {
+		ar[i] = (int)(Math.random()* Integer.MAX_VALUE);
+		}
+	
 	}
 }
