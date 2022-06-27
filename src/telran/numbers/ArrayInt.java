@@ -83,23 +83,23 @@ public static int indexOf(int ar[], int number) {
 }
 
 public static void sort(int[] ar) {
-	boolean Swap = false;
-	int i = 0;
-    while(!Swap) {
-    Swap = moveMaxToEnd(ar, i);
-    i++;
-    }
+	boolean sorted = true;
+	int length = ar.length;
+     do {
+    	sorted = moveMaxToEnd(ar, length);
+    	length--;}
+     while(!sorted);
 }
 
 public static boolean moveMaxToEnd(int[] ar, int index) {
-	boolean b = true;
-	for(int i = 1; i < ar.length - index; i++) {
+	boolean sorted = true;
+	for(int i = 1; i < ar.length; i++) {
 		if(ar[i - 1] > ar[i]) {
 			swap(ar,i);
-			b = false;
+			sorted = false;
 		}
 	}
-return b;
+return sorted;
 }
 
 private static void swap(int[] ar, int index) {
@@ -128,6 +128,12 @@ private static void swap(int[] ar, int index) {
 			}
 			middle = (left + right) / 2;
 		}
-		return left > right ? -1: middle;
+		return left > right ? -(left + 1): getFirstIndex(ar, middle, number);
 	}
+private static int getFirstIndex(int[] ar, int middle, int number) {
+	while (middle >=0 && ar[middle]==number) {
+		middle--;
+	}
+	return middle +1;
+}
 }
