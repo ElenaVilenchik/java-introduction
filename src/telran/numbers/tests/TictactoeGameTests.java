@@ -12,9 +12,9 @@ class TictactoeGameTests {
 	@Test
 	void gameIsNotOverTest() {
 		char matrix[][] = {
+				{E, X, Z},
 				{Z, E, X},
-				{X, Z, E},
-				{E, E, E}
+				{E, Z, X}
 				};
 		assertEquals(0, TictactoeGame.tictactoeMove(matrix, 0, 2, Z));
 		assertEquals(0, TictactoeGame.tictactoeMove(matrix, 2, 0, X));
@@ -81,31 +81,64 @@ class TictactoeGameTests {
 	@Test
 	void gameIsOverFullLeftDiagonalTest() {
 		char matrix[][] = {
-				{E, Z, Z},
-				{Z, X, X},
+				{X, Z, Z},
+				{Z, E, X},
 				{X, Z, X}
 				};
-		assertEquals(1, TictactoeGame.tictactoeMove(matrix, 0, 0, X));
-		assertEquals(1, TictactoeGame.tictactoeMove(matrix, 0, 0, Z));
+		assertEquals(1, TictactoeGame.tictactoeMove(matrix, 1, 1, X));
+		assertEquals(1, TictactoeGame.tictactoeMove(matrix, 1, 1, Z));
 	}
 	
 	@Test
-	void rgameIsOverFullRightDiagonalTest() {
+	void gameIsOverFullLeftDiagonal_LastRowTest() {
+		char matrix[][] = {
+				{X, Z, Z},
+				{Z, X, X},
+				{X, Z, E}
+				};
+		assertEquals(1, TictactoeGame.tictactoeMove(matrix, 2, 2, X));
+		assertEquals(3, TictactoeGame.tictactoeMove(matrix, 2, 2, Z));
+	}
+	
+	@Test
+	void gameIsOverFullLeftDiagonal_FirstRowTest() {
+		char matrix[][] = {
+				{E, X, Z},
+				{Z, X, X},
+				{Z, Z, X}
+				};
+		assertEquals(1, TictactoeGame.tictactoeMove(matrix, 1, 1, Z));
+	//	assertEquals(1, TictactoeGame.tictactoeMove(matrix, 1, 1, X));
+	}
+	
+	@Test
+	void gameIsOverFullRightDiagonal_LastRowTest() {
 		char matrix[][] = {
 				{X, X, Z},
 				{Z, Z, X},
 				{E, Z, X}
 				};
 		assertEquals(1, TictactoeGame.tictactoeMove(matrix, 2, 0, Z));
-		assertEquals(3, TictactoeGame.tictactoeMove(matrix, 2, 0, X));
+		//assertEquals(3, TictactoeGame.tictactoeMove(matrix, 2, 0, X));
+	}
+	
+	@Test
+	void gameIsOverFullRightDiagonal_FirstRowTest() {
+		char matrix[][] = {
+				{X, X, E},
+				{Z, Z, X},
+				{Z, Z, X}
+				};
+		assertEquals(1, TictactoeGame.tictactoeMove(matrix, 0, 2, Z));
+		assertEquals(1, TictactoeGame.tictactoeMove(matrix, 0, 2, X));
 	}
 	
 	@Test
 	void gameIsOverTest() {
 		char matrix[][] = {
-				{'0', 'x','0'  },
-				{'0', '0', 'x'},
-				{'0', '0', 'x'}
+				{Z, X, Z},
+				{Z, Z, X},
+				{Z, Z, X}
 				};
 		assertEquals(1, TictactoeGame.tictactoeMove(matrix, 2, 0, Z));
 		assertEquals(1, TictactoeGame.tictactoeMove(matrix, 0, 2, X));

@@ -11,11 +11,11 @@ public class TictactoeGame {
 		matrix[nRow][nCol] = symb;
 		if (isColumnWin(matrix, nCol) || 
 				isRowWin(matrix, nRow) || 
-					isDiagonalLeftWin(matrix) ||
-						isDiagonalRightWin(matrix)) {
+				isDiagonalstWin(matrix)) 
+				{
 			return 1;
 		}
-		else if (isMatrixFull(matrix)) {
+		if (isMatrixFull(matrix)) {
 				return 3;
 		}		
 	 return 0;
@@ -50,21 +50,13 @@ public class TictactoeGame {
 		return true;
 	}
 	
-	public static boolean isDiagonalLeftWin(char matrix[][]) {
+	public static boolean isDiagonalstWin(char matrix[][]) {
 		for (int i = 1; i < matrix.length; i++) {
-			if (matrix[i][i] != matrix[0][0]) {
+			if (matrix[i][i] != matrix[0][0] &&
+					matrix[i][matrix.length - 1 - i] != matrix[0][matrix.length -1]){
 				return false;
 			}
 		}
 		return true;
 	}	
-	
-	public static boolean isDiagonalRightWin(char matrix[][]) {
-		for (int i = 1; i < matrix.length; i++) {
-			if (matrix[matrix.length - 1 - i][i] != matrix[matrix.length -i][i-1]) {
-				return false;
-			}
-		}
-		return true;
-	}
 }
