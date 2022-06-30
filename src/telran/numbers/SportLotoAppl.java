@@ -1,12 +1,7 @@
 package telran.numbers;
 
-//import java.util.Arrays;
+ //*application should print out 7 random numbers in the range [1-49]
 
-/**
- * 
- * @author User
- *application should print out 7 random numbers in the range [1-49]
- */
 public class SportLotoAppl {
 
 private static final int N_NUMBERS = 7;
