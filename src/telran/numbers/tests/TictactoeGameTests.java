@@ -107,8 +107,8 @@ class TictactoeGameTests {
 				{Z, X, X},
 				{Z, Z, X}
 				};
-		assertEquals(1, TictactoeGame.tictactoeMove(matrix, 1, 1, Z));
-	//	assertEquals(1, TictactoeGame.tictactoeMove(matrix, 1, 1, X));
+		assertEquals(1, TictactoeGame.tictactoeMove(matrix, 0, 0, Z));
+		assertEquals(1, TictactoeGame.tictactoeMove(matrix, 0, 0, X));
 	}
 	
 	@Test
@@ -119,7 +119,7 @@ class TictactoeGameTests {
 				{E, Z, X}
 				};
 		assertEquals(1, TictactoeGame.tictactoeMove(matrix, 2, 0, Z));
-		//assertEquals(3, TictactoeGame.tictactoeMove(matrix, 2, 0, X));
+		assertEquals(3, TictactoeGame.tictactoeMove(matrix, 2, 0, X));
 	}
 	
 	@Test

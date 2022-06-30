@@ -50,13 +50,15 @@ public class TictactoeGame {
 		return true;
 	}
 	
-	public static boolean isDiagonalstWin(char matrix[][]) {
+	public static boolean isDiagonalstWin(char matrix[][]){
 		for (int i = 1; i < matrix.length; i++) {
-			if (matrix[i][i] != matrix[0][0] &&
-					matrix[i][matrix.length - 1 - i] != matrix[0][matrix.length -1]){
-				return false;
-			}
+			if (matrix[i][i] != matrix[0][0]) {
+				for (int j = 1; j < matrix.length; j++)
+					if (matrix[j][matrix.length - 1 - j] != matrix[0][matrix.length -1]){
+					return false;
+					}
+			}	
 		}
 		return true;
-	}	
+	}
 }
