@@ -83,6 +83,7 @@ public static int indexOf(int ar[], int number) {
 }
 
 public static void sort(int[] ar) {
+	// O[N(N-1)/2]
 	boolean sorted = true;
 	int length = ar.length;
      do {
@@ -130,6 +131,7 @@ private static void swap(int[] ar, int index) {
 		}
 		return left > right ? -(left + 1): getFirstIndex(ar, middle, number);
 	}
+	
 private static int getFirstIndex(int[] ar, int middle, int number) {
 	while (middle >=0 && ar[middle]==number) {
 		middle--;
