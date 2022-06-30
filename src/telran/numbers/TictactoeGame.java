@@ -1,7 +1,5 @@
 package telran.numbers;
 
-//import java.util.Arrays;
-
 public class TictactoeGame {
 	public static final char X = 'x';
 	public static final char Z = '0';
