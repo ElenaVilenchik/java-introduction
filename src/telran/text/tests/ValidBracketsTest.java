@@ -13,10 +13,11 @@ class ValidBracketsTest {
 		String[] data = { 
 				"aaaaaa (sdfsdfdsf[dfd(f)f] zcvzxcv {{[ghjk]}} asd )",
 				" (sdfsdfdsf[dfd(f)f] zcvzxcv {{[ghjk]}} asd )",
-				"[()]{}{[()()]()} " };
+				"[()]{}{[()()]()} " 
+				};
 		
 		for (int i = 0; i < data.length; i++) {
-			assertTrue(ValidBrackets.hasaValidBrackets(data[i]));
+			assertTrue(ValidBrackets.hasValidBrackets(data[i]));
 		}
 	}
 
@@ -33,7 +34,7 @@ class ValidBracketsTest {
 				"aaaaaa (sdfsdfdsf[dfd(f)f]" };
 		
 		for (int i = 0; i < data.length; i++) {
-			assertFalse(ValidBrackets.hasaValidBrackets(data[i]));
+			assertFalse(ValidBrackets.hasValidBrackets(data[i]));
 		}
 	}
 }

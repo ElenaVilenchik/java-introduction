@@ -7,27 +7,26 @@ public class ValidBrackets {
 
 	// Check that 3 types of brackets: (), [], {} are used properly in text
 	// represented by String.
-	
-	public static boolean hasaValidBrackets(String text) {
+	private final static String brOpen = "({[";
+	private final static String brClose = ")}]";
+
+	public static boolean hasValidBrackets(String text) {
 
 		Deque<Character> stack = new ArrayDeque<Character>();
-		int lenghtString = text.length();
 
-		for (int i = 0; i < lenghtString; i++) {
-			char charStr = text.charAt(i);
-			if (charStr == '(' || charStr == '[' || charStr == '{') {
-				stack.push(charStr);
-			}
-			else {
-				if (charStr == '}' || charStr == ']' || charStr == ')') {
-					if (!stack.isEmpty()) {
-						if (charStr == ')' && stack.peek() == '(' || (charStr == '}' && stack.peek() == '{')
-								|| (charStr == ']' && stack.peek() == '[')) {
-							stack.pop();
-						} else return false;
-						
-					} else return false;
-				}
+		for (int i = 0; i < text.length(); i++) {
+			char charText = text.charAt(i);
+			if (brOpen.indexOf(charText) >= 0) {
+				stack.push(charText);
+			} else if (brClose.indexOf(charText) >= 0) {
+				if (!stack.isEmpty()) {
+					if (charText == ')' && stack.peek() == '(' || (charText == '}' && stack.peek() == '{')
+							|| (charText == ']' && stack.peek() == '[')) {
+						stack.pop();
+					} else
+						return false;
+				} else
+					return false;
 			}
 		}
 		return (stack.isEmpty());
