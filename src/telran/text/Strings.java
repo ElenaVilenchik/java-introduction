@@ -219,34 +219,36 @@ public class Strings {
 	public static boolean isIPv4(String ipV4str) {
 		return ipV4str.matches(ipV4Regex());
 	}
+
 	
-	public static boolean isArithmeticExpression(String expression) {
-		if (!checkParentheses(expression))
-			return false;
-
-		expression = removeSpacesAndParentheses(expression);
-
-		return expression.matches(arithmeticExpression());
-	}
-
-	private static boolean checkParentheses(String expression) {
-
-		int count = 0;
-		char[] strChars = expression.toCharArray();
-		for (char c : strChars) {
-			if (c == '(')
-				count++;
-			if (c == ')') {
-				if (count == 0)
-					return false;
-				count--;
-			}
-		}
-		return count == 0;
-	}
-
-	private static String removeSpacesAndParentheses(String expression) {
-
-		return expression.trim().replaceAll("[\\s|(|)]+", "");
-	}
+//	task 1 HW-08
+	
+//	public static boolean isArithmeticExpression(String expression) {
+//		if (!checkParentheses(expression))
+//			return false;
+//
+//		expression = removeSpacesAndParentheses(expression);
+//
+//		return expression.matches(arithmeticExpression());
+//	}
+//
+//	private static boolean checkParentheses(String expression) {
+//
+//		int count = 0;
+//		char[] strChars = expression.toCharArray();
+//		for (char c : strChars) {
+//			if (c == '(')
+//				count++;
+//			if (c == ')') {
+//				if (count == 0) return false;
+//				count--;
+//			}
+//		}
+//		return count == 0;
+//	}
+//
+//	private static String removeSpacesAndParentheses(String expression) {
+//
+//		return expression.replaceAll("[()\s]", "");
+//	}
 }
