@@ -1,5 +1,6 @@
 package telran.text.tests;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import telran.text.Strings;
@@ -33,10 +34,10 @@ class StringsClassTests {
 	
 	@Test
 	void sortString() {
-		String[] str = { "9", "250", "50", "123", "23", "9", "123", "50" };
-		String[] expected = { "9", "9", "23", "50", "50", "123", "123", "250" };
-		Strings.sortStringsAsNumbers(str);
-		assertArrayEquals(expected, str);
+		String[] str3 = { "9", "250", "50", "123", "23", "9", "123", "50" };
+		String[] expected3 = { "9", "9", "23", "50", "50", "123", "123", "250" };
+		Strings.sortStringsAsNumbers(str3);
+		assertArrayEquals(expected3, str3);
 
 		String[] str1 = { "9", "250", "50", "123", "23", "5", "123", "0" };
 		String[] expected1 = { "0", "5", "9", "23", "50", "123", "123", "250" };
